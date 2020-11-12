@@ -1,15 +1,12 @@
 import utilities
 class Ship:
-    def __init__(self,pos,vel,angle,image,thrustim):
-        self.pos = pos;
-        self.vel = vel;
-        self.angle = angle;
-        self.image = image;
-        self.thrustim = thrustim;
+    def __init__(self,pos):
+        self.pos = pos
+        self.vel = [0,0]
+        self.angle = (3.14/4.0)
+        self.thrust = False
 
-    def draw(self, canvas):
+    def getPos(self):
+        return self.pos
 
-        if self.thrust:
-            canvas.blit(utilities.rot_center(self.thrust_image, self.angle), self.pos)
-        else:
-            canvas.blit(utilities.rot_center(self.image, self.angle), self.pos)
+    def updatePos(self):
