@@ -11,6 +11,7 @@ class Ship:
         self.lives = 3
         self.image = pygame.Surface([30, 30])
         self.image.fill(utilities.WHITE)
+        self.rect = self.image.get_rect()
     def getPos(self):
         return self.pos[0], self.pos[1]
 
@@ -23,12 +24,14 @@ class Ship:
         self.pos[0] = self.pos[0] + self.vel[0]
         self.pos[1] = self.pos[1] + self.vel[1]
         self.angle += self.angVel
+        self.rect.x = self.pos[0]
+        self.rect.y = self.pos[1]
 
 
     def updateVels(self):
-        accel = 1
+        accel = .5
         self.front = utilities.angle_to_vector(self.angle)
-        friction = accel/20
+        friction = accel/10
         if self.thrust:
             self.vel[0] += self.front[0]*accel
             self.vel[1] += self.front[1] * accel;
@@ -36,6 +39,6 @@ class Ship:
         self.vel[1] -= self.vel[1] * friction
 
     def rotSpeed(self,ang):
-        self.angVel+= ang
+        self.angVel = ang
 
     

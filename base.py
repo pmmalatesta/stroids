@@ -2,8 +2,8 @@ import pygame,utilities, getComs
 import sys,ship, time
 from pygame.locals import *
 
-WIDTH=1200
-HEIGHT=800
+WIDTH=1600
+HEIGHT=900
 clock = pygame.time.Clock()
 
 def main():
@@ -12,12 +12,16 @@ def main():
     screen.fill(utilities.BLACK)
     serenity = ship.Ship([WIDTH/2,HEIGHT/2])
     print(serenity.lives)
+    screen.blit(serenity.image, serenity.pos)
+
     while serenity.lives>0:
-        clock.tick(60)
-        screen.blit(serenity.image,serenity.pos)
+
+        clock.tick(30)
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 getComs.keydown(event, serenity)
+            if event.type == KEYUP:
+                getComs.keyup(event,serenity)
             if event.type == QUIT:
                 if event.type == QUIT:
                     pygame.display.update()
@@ -26,6 +30,6 @@ def main():
                     sys.exit()
         serenity.updateVels()
         serenity.updatePos(0,0)
-        pygame.display.flip()
+        pygame.display.update()
 
 main()
