@@ -1,4 +1,4 @@
-import utilities
+import utilities, pygame
 import math,sys,os,random
 class Ship:
     def __init__(self,pos):
@@ -9,7 +9,8 @@ class Ship:
         self.thrust = False
         self.front = utilities.angle_to_vector(self.angle)
         self.lives = 3
-
+        self.image = pygame.Surface([30, 30])
+        self.image.fill(utilities.WHITE)
     def getPos(self):
         return self.pos[0], self.pos[1]
 
