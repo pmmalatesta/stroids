@@ -4,7 +4,7 @@ class Ship:
     def __init__(self,pos):
         self.pos = pos
         self.vel = [0,0]
-        self.angle = (3.14/2.0)
+        self.angle = 90
         self.angVel = 0
         self.thrust = False
         self.front = utilities.angle_to_vector(self.angle)
@@ -12,13 +12,14 @@ class Ship:
         self.image = pygame.Surface([30, 30])
         self.image.fill(utilities.WHITE)
         self.rect = self.image.get_rect()
+        self.rect.x = pos[0]
+        self.rect.y = pos[1]
+
     def getPos(self):
         return self.pos[0], self.pos[1]
 
-
     def set_thrust(self,thruster):
         self.thrust = thruster
-
 
     def updatePos(self,wid,hei):
         self.pos[0] = self.pos[0] + self.vel[0]
@@ -26,7 +27,6 @@ class Ship:
         self.angle += self.angVel
         self.rect.x = self.pos[0]
         self.rect.y = self.pos[1]
-
 
     def updateVels(self):
         accel = .5

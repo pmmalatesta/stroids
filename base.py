@@ -11,8 +11,7 @@ def main():
     screen: pygame.Surface = pygame.display.set_mode((WIDTH, HEIGHT))
     screen.fill(utilities.BLACK)
     serenity = ship.Ship([WIDTH/2,HEIGHT/2])
-    print(serenity.lives)
-    screen.blit(serenity.image, serenity.pos)
+    ralph = screen.blit(serenity.image, serenity.rect)
 
     while serenity.lives>0:
 
@@ -30,6 +29,8 @@ def main():
                     sys.exit()
         serenity.updateVels()
         serenity.updatePos(0,0)
+        screen.fill(utilities.BLACK)
+        screen.blit(serenity.image,serenity.rect)
         pygame.display.update()
 
 main()
