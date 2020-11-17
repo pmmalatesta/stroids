@@ -5,11 +5,11 @@ TURNRATE = 1
 F_ACCEL = 15
 R_ACCEL = -5
 def keydown(event,ship):
-    ang_vel = 4.5
+    angAc=1;
     if event.key == K_a:
-        ship.rotSpeed(ang_vel)
+        ship.rotSpeed(angAc)
     if event.key == K_d:
-        ship.rotSpeed(-ang_vel)
+        ship.rotSpeed(-angAc)
     if event.key == K_w:
         ship.set_thrust(True)
     if event.key == K_SPACE:

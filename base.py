@@ -28,9 +28,9 @@ def main():
                     pygame.quit()
                     sys.exit()
         serenity.updateVels()
-        serenity.updatePos(0,0)
+        serenity.updatePos(WIDTH,HEIGHT)
         screen.fill(utilities.BLACK)
-        screen.blit(serenity.image,serenity.rect)
+        screen.blit(utilities.rot(serenity.image,serenity.angVel),serenity.rect)
         pygame.display.update()
 
 main()
