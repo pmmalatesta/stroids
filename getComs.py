@@ -14,8 +14,8 @@ def keydown(event,ship):
     if event.key == K_w:
         ship.set_thrust(True)
     if event.key == K_SPACE:
-        #ship.shoot()
-        ship.lives -=1
+        ship.shoot(ship.getPos(),ship.angle,bullVel)
+        #ship.lives -=1
 def keyup(event,ship):
     if event.key in (K_a,K_d):
         ship.rotSpeed(0)

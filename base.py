@@ -30,6 +30,14 @@ def main():
         serenity.updatePos(WIDTH,HEIGHT)
         screen.fill(utilities.BLACK)
         screen.blit(utilities.rot(serenity.image,serenity.angVel),serenity.rect)
+        j=[]
+        for shooty in serenity.bullList:
+            screen.blit(shooty.bull, shooty.position)
+            shooty.fly()
+            if shooty.lifetime< shooty.maxl:
+                j.append(shooty)
+        serenity.bullList=j
+        print(len(serenity.bullList))
         pygame.display.update()
 
 main()

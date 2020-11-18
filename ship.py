@@ -1,4 +1,4 @@
-import utilities, pygame
+import utilities, pygame, bang
 import math,sys,os,random
 class Ship(pygame.sprite.Sprite):
     def __init__(self,pos):
@@ -22,12 +22,15 @@ class Ship(pygame.sprite.Sprite):
         self.angac=0
         self.clean = self.image.copy()
         self.bullList = []
+        self.pythag = math.sqrt(pos[0]*pos[0]+pos[1]*pos[1])
 
     def getPos(self):
         oset = 30;
         cx = self.rect.centerx
         cy = self.rect.centery
         return [cx+oset*math.cos(math.radians(self.angle)), cy+oset*math.sin(math.radians(-self.angle ))]
+
+
     def set_thrust(self,thruster):
         self.thrust = thruster
 
@@ -68,3 +71,6 @@ class Ship(pygame.sprite.Sprite):
 
     def rotSpeed(self,ang):
         self.angac = ang
+
+    def shoot(self, loc, direct, quick):
+        self.bullList.append(bang.Bang(loc,direct,quick,self.pythag))
