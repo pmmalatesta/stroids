@@ -1,6 +1,6 @@
 import utilities, pygame
 import math,sys,os,random
-class Ship:
+class Ship(pygame.sprite.Sprite):
     def __init__(self,pos):
         self.pos = pos
         self.vel = [0,0]
@@ -9,19 +9,25 @@ class Ship:
         self.thrust = False
         self.front = utilities.angle_to_vector(self.angle)
         self.lives = 3
-        self.image = pygame.Surface([30, 30])
+        self.image = pygame.Surface([51, 51])
         self.detAng = 0;
-        #self.image.fill(utilities.WHITE)
-        pygame.draw.polygon(self.image, utilities.WHITE, [(15, 0), (5, 25), (25, 25)])
+        self.pic = pygame.image.load('shipp.png')
+        self.pic.set_colorkey(utilities.WHITE)
+        self.pic.convert_alpha()
+        #self.image.fill(utilities.WHITE)----------------------------
+        self.image.blit(self.pic, (0,0))
         self.rect = self.image.get_rect()
         self.rect.x = pos[0]
         self.rect.y = pos[1]
         self.angac=0
         self.clean = self.image.copy()
+        self.bullList = []
 
     def getPos(self):
-        return self.pos[0], self.pos[1]
-
+        oset = 30;
+        cx = self.rect.centerx
+        cy = self.rect.centery
+        return [cx+oset*math.cos(math.radians(self.angle)), cy+oset*math.sin(math.radians(-self.angle ))]
     def set_thrust(self,thruster):
         self.thrust = thruster
 
@@ -44,7 +50,6 @@ class Ship:
         self.image = utilities.rot(self.clean,self.detAng)
         self.rect.x = self.pos[0]
         self.rect.y = self.pos[1]
-
     def updateVels(self):
         accel = .5
         self.front = utilities.angle_to_vector(self.angle)
@@ -63,8 +68,3 @@ class Ship:
 
     def rotSpeed(self,ang):
         self.angac = ang
-
-    def shoot(self):
-        print('babababababa')
-
-    

@@ -11,7 +11,6 @@ def main():
     screen: pygame.Surface = pygame.display.set_mode((WIDTH, HEIGHT))
     screen.fill(utilities.BLACK)
     serenity = ship.Ship([WIDTH/2,HEIGHT/2])
-    ralph = screen.blit(serenity.image, serenity.rect)
 
     while serenity.lives>0:
 

@@ -6,6 +6,7 @@ F_ACCEL = 15
 R_ACCEL = -5
 def keydown(event,ship):
     angAc=1;
+    bullVel = 25
     if event.key == K_a:
         ship.rotSpeed(angAc)
     if event.key == K_d:
@@ -14,8 +15,7 @@ def keydown(event,ship):
         ship.set_thrust(True)
     if event.key == K_SPACE:
         #ship.shoot()
-        ship.lives -= 1
-
+        ship.lives -=1
 def keyup(event,ship):
     if event.key in (K_a,K_d):
         ship.rotSpeed(0)
