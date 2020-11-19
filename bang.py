@@ -2,6 +2,7 @@ import utilities, pygame,math
 
 class Bang(pygame.sprite.Sprite):
     def __init__(self,posit, hed, spd,lengthy):
+        pygame.sprite.Sprite.__init__(self)
         self.position = posit
         self.velo= [spd*math.cos(math.radians(hed)), spd*math.sin(math.radians(-hed))]
         self.bull = pygame.Surface([5, 5])

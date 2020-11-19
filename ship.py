@@ -2,6 +2,7 @@ import utilities, pygame, bang
 import math,sys,os,random
 class Ship(pygame.sprite.Sprite):
     def __init__(self,pos):
+        pygame.sprite.Sprite.__init__(self)
         self.pos = pos
         self.vel = [0,0]
         self.angle = 90

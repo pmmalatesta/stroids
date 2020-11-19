@@ -1,5 +1,5 @@
 import pygame,utilities, getComs
-import sys,ship, time
+import sys,ship, bigrock
 from pygame.locals import *
 
 WIDTH=1600
@@ -11,7 +11,7 @@ def main():
     screen: pygame.Surface = pygame.display.set_mode((WIDTH, HEIGHT))
     screen.fill(utilities.BLACK)
     serenity = ship.Ship([WIDTH/2,HEIGHT/2])
-
+    rockOn = bigrock.iceRocks(WIDTH,HEIGHT)
     while serenity.lives>0:
 
         clock.tick(30)
@@ -37,7 +37,9 @@ def main():
             if shooty.lifetime< shooty.maxl:
                 j.append(shooty)
         serenity.bullList=j
-        print(len(serenity.bullList))
+        for brock in rockOn.largeRocks:
+            screen.blit(brock.image, brock.pos)
+        rockOn.updaterocks()
         pygame.display.update()
 
 main()
