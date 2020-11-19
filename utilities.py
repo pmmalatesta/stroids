@@ -1,3 +1,4 @@
+# https://stackoverflow.com/questions/4183208/how-do-i-rotate-an-image-around-its-center-using-pygame for rot
 import pygame, math
 BLACK = [0,0,0]
 WHITE = [255,255,255]

@@ -10,6 +10,7 @@ class Rock(pygame.sprite.Sprite):
         self.pic = pygame.image.load('bstroid.png')
         self.pic.set_colorkey(utilities.WHITE)
         self.pic.convert_alpha()
+        self.big = True
         self.image = pygame.Surface([81, 81])
         self.image.blit(self.pic, (0,0))
         self.age = 0

@@ -1,9 +1,10 @@
-import pygame, rock, math, utilities
-spawnDelay = 25
+import pygame, rock, math, utilities, pebbles, random
+spawnDelay = 60
 class iceRocks(pygame.sprite.Sprite):
     def __init__(self,wid,hei):
         self.wid = wid
         self.hei = hei
+        self.spawndelay = 60
         self.largeRocks = []
         self.smallRocks = []
         self.bspeed = 15
@@ -30,5 +31,8 @@ class iceRocks(pygame.sprite.Sprite):
             self.ticker=0
             self.createbigRock()
 
-    def babyboys(self):
-        print(holding val)
+    def babyboys(self, bigboy):
+        angle = random.randint(0,180)
+        angle2 = angle + random.randint(150,210)
+        self.sprlist.add(pebbles.Pebbles(bigboy.pos, bigboy.expiration*1.5,self.bspeed/1.5,angle))
+        self.sprlist.add(pebbles.Pebbles(bigboy.pos, bigboy.expiration*1.5,self.bspeed/1.5,angle2))

@@ -1,4 +1,4 @@
-import pygame,utilities, getComs
+import pygame,utilities, getComs,random
 import sys,ship, bigrock
 from pygame.locals import *
 
@@ -41,11 +41,13 @@ def main():
             snipped = pygame.sprite.spritecollide(brock, serenity.bullList, True)
             if snipped:
                 score+=1
+                if brock.big:
+                    rockOn.babyboys(brock)
+                brock.kill()
         rockOn.updaterocks()
         pygame.display.update()
         ouch = pygame.sprite.spritecollide(serenity, rockOn.sprlist, True)
-        print(len(serenity.bullList))
         if ouch:
             serenity.loselife()
-
+        rockOn.spawndelay = 40 - score
 main()
