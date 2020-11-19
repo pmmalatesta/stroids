@@ -2,6 +2,7 @@ import pygame, math, random, utilities
 
 class Rock(pygame.sprite.Sprite):
     def __init__(self,wid,hei,BASEV, lifespan):
+        pygame.sprite.Sprite.__init__(self)
         quad= random.randint(1,4)
         self.speed = BASEV
         self.pos = self.assignPos(quad,wid,hei)
@@ -16,6 +17,9 @@ class Rock(pygame.sprite.Sprite):
         self.angSpeed = random.randint(-15,15)
         self.angle = 0
         self.clean = self.image.copy()
+        self.rect = self.image.get_rect()
+        self.rect.x = self.pos[0]
+        self.rect.y = self.pos[1]
 
 
     def assignPos(self,quad,wid,hei):

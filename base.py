@@ -37,9 +37,12 @@ def main():
             if shooty.lifetime< shooty.maxl:
                 j.append(shooty)
         serenity.bullList=j
-        for brock in rockOn.largeRocks:
+        for brock in rockOn.sprlist:
             screen.blit(brock.image, brock.pos)
         rockOn.updaterocks()
         pygame.display.update()
+        ouch = pygame.sprite.spritecollide(serenity,rockOn.sprlist,True)
+        if ouch:
+            ship.loselife()
 
 main()
