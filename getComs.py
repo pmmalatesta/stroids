@@ -4,6 +4,7 @@ from pygame.locals import *
 TURNRATE = 1
 F_ACCEL = 15
 R_ACCEL = -5
+
 def keydown(event,ship):
     angAc=1;
     bullVel = 25

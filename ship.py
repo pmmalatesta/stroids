@@ -24,6 +24,11 @@ class Ship(pygame.sprite.Sprite):
         self.clean = self.image.copy()
         self.bullList = []
         self.pythag = math.sqrt(pos[0]*pos[0]+pos[1]*pos[1])
+        pygame.mixer.pre_init()
+        self.shootsound = pygame.mixer.Sound('shot.wav')
+        self.shootsound.set_volume(1)
+
+
 
     def getPos(self):
         oset = 30;
@@ -62,6 +67,10 @@ class Ship(pygame.sprite.Sprite):
         if self.thrust:
             self.vel[0] += self.front[0]*accel
             self.vel[1] += self.front[1] * accel;
+            pygame.mixer.Channel(0).play(pygame.mixer.Sound('thrustsound.mp3'))
+        else:
+            j=2
+            #self.thrustsound.stop()
         self.vel[0] -= self.vel[0]*friction
         self.vel[1] -= self.vel[1] * friction
         self.angVel+= self.angac
@@ -75,3 +84,4 @@ class Ship(pygame.sprite.Sprite):
 
     def shoot(self, loc, direct, quick):
         self.bullList.append(bang.Bang(loc,direct,quick,self.pythag))
+        self.shootsound.play()

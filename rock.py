@@ -7,13 +7,16 @@ class Rock(pygame.sprite.Sprite):
         self.pos = self.assignPos(quad,wid,hei)
         self.vel = self.assignVels(quad,wid,hei)
         self.pic = pygame.image.load('bstroid.png')
-        self.pic.set_colorkey(utilities.BLACK)
+        self.pic.set_colorkey(utilities.WHITE)
         self.pic.convert_alpha()
-
         self.image = pygame.Surface([81, 81])
         self.image.blit(self.pic, (0,0))
         self.age = 0
         self.expiration = lifespan
+        self.angSpeed = random.randint(-15,15)
+        self.angle = 0
+        self.clean = self.image.copy()
+
 
     def assignPos(self,quad,wid,hei):
         if quad == 1:
