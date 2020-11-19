@@ -18,8 +18,7 @@ class Rock(pygame.sprite.Sprite):
         self.angle = 0
         self.clean = self.image.copy()
         self.rect = self.image.get_rect()
-        self.rect.x = self.pos[0]
-        self.rect.y = self.pos[1]
+        self.rect.center = self.pos
 
 
     def assignPos(self,quad,wid,hei):

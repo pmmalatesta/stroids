@@ -30,19 +30,20 @@ def main():
         serenity.updatePos(WIDTH,HEIGHT)
         screen.fill(utilities.BLACK)
         screen.blit(utilities.rot(serenity.image,serenity.angVel),serenity.rect)
-        j=[]
         for shooty in serenity.bullList:
             screen.blit(shooty.bull, shooty.position)
             shooty.fly()
-            if shooty.lifetime< shooty.maxl:
-                j.append(shooty)
-        serenity.bullList=j
+            if shooty.lifetime> shooty.maxl:
+                shooty.kill()
+
         for brock in rockOn.sprlist:
             screen.blit(brock.image, brock.pos)
+            snipped = pygame.sprite.spritecollide(brock, serenity.bullList, True)
         rockOn.updaterocks()
         pygame.display.update()
-        ouch = pygame.sprite.spritecollide(serenity,rockOn.sprlist,True)
+        ouch = pygame.sprite.spritecollide(serenity, rockOn.sprlist, True)
+        print(len(serenity.bullList))
         if ouch:
-            ship.loselife()
+            serenity.loselife()
 
 main()

@@ -2,7 +2,6 @@ import pygame, rock, math, utilities
 spawnDelay = 25
 class iceRocks(pygame.sprite.Sprite):
     def __init__(self,wid,hei):
-        pygame.sprite.Sprite.__init__(self)
         self.wid = wid
         self.hei = hei
         self.largeRocks = []
@@ -20,6 +19,7 @@ class iceRocks(pygame.sprite.Sprite):
         for boulder in self.sprlist:
             boulder.pos[0] += boulder.vel[0]
             boulder.pos[1] += boulder.vel[1]
+            boulder.rect.center = boulder.pos
             boulder.angle += boulder.angSpeed
             boulder.image = utilities.rot(boulder.clean, boulder.angle)
             boulder.age +=1

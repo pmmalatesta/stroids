@@ -18,11 +18,10 @@ class Ship(pygame.sprite.Sprite):
         #self.image.fill(utilities.WHITE)----------------------------
         self.image.blit(self.pic, (0,0))
         self.rect = self.image.get_rect()
-        self.rect.x = pos[0]
-        self.rect.y = pos[1]
+        self.rect.center = pos
         self.angac=0
         self.clean = self.image.copy()
-        self.bullList = []
+        self.bullList = pygame.sprite.Group()
         self.pythag = math.sqrt(pos[0]*pos[0]+pos[1]*pos[1])
         pygame.mixer.pre_init()
         self.shootsound = pygame.mixer.Sound('shot.wav')
@@ -59,8 +58,7 @@ class Ship(pygame.sprite.Sprite):
         self.detAng += self.angVel
         self.detAng = self.detAng%360
         self.image = utilities.rot(self.clean,self.detAng)
-        self.rect.x = self.pos[0]
-        self.rect.y = self.pos[1]
+        self.rect.center = self.pos
     def updateVels(self):
         accel = .5
         self.front = utilities.angle_to_vector(self.angle)
@@ -84,7 +82,7 @@ class Ship(pygame.sprite.Sprite):
         self.angac = ang
 
     def shoot(self, loc, direct, quick):
-        self.bullList.append(bang.Bang(loc,direct,quick,self.pythag))
+        self.bullList.add(bang.Bang(loc,direct,quick,self.pythag))
         self.shootsound.play()
 
     def loselife(self):
