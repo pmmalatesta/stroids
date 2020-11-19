@@ -29,3 +29,6 @@ class iceRocks(pygame.sprite.Sprite):
         if self.ticker > spawnDelay:
             self.ticker=0
             self.createbigRock()
+
+    def babyboys(self):
+        print(holding val)

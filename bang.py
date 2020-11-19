@@ -9,8 +9,11 @@ class Bang(pygame.sprite.Sprite):
         pygame.draw.circle(self.bull,utilities.CYAN,[3,3],2)
         self.lifetime = 0
         self.maxl = lengthy/spd
+        self.rect = self.bull.get_rect()
+        self.rect.center = self.position
 
     def fly(self):
         self.position[0] += self.velo[0]
         self.position[1] += self.velo[1]
+        self.rect.center=self.position
         self.lifetime +=1

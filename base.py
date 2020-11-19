@@ -5,10 +5,10 @@ from pygame.locals import *
 WIDTH=1600
 HEIGHT=900
 clock = pygame.time.Clock()
-
 def main():
     pygame.init()
     screen: pygame.Surface = pygame.display.set_mode((WIDTH, HEIGHT))
+    score = 0
     screen.fill(utilities.BLACK)
     serenity = ship.Ship([WIDTH/2,HEIGHT/2])
     rockOn = bigrock.iceRocks(WIDTH,HEIGHT)
@@ -39,6 +39,8 @@ def main():
         for brock in rockOn.sprlist:
             screen.blit(brock.image, brock.pos)
             snipped = pygame.sprite.spritecollide(brock, serenity.bullList, True)
+            if snipped:
+                score+=1
         rockOn.updaterocks()
         pygame.display.update()
         ouch = pygame.sprite.spritecollide(serenity, rockOn.sprlist, True)
