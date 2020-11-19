@@ -1,5 +1,4 @@
 import pygame, rock, math, utilities, pebbles, random
-spawnDelay = 60
 class iceRocks(pygame.sprite.Sprite):
     def __init__(self,wid,hei):
         self.wid = wid
@@ -27,7 +26,7 @@ class iceRocks(pygame.sprite.Sprite):
             if boulder.age > boulder.expiration:
                 boulder.kill()
         self.ticker +=1
-        if self.ticker > spawnDelay:
+        if self.ticker > self.spawndelay:
             self.ticker=0
             self.createbigRock()
 
@@ -36,3 +35,4 @@ class iceRocks(pygame.sprite.Sprite):
         angle2 = angle + random.randint(150,210)
         self.sprlist.add(pebbles.Pebbles(bigboy.pos, bigboy.expiration*1.5,self.bspeed/1.5,angle))
         self.sprlist.add(pebbles.Pebbles(bigboy.pos, bigboy.expiration*1.5,self.bspeed/1.5,angle2))
+        bigboy.kill()

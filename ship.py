@@ -28,6 +28,8 @@ class Ship(pygame.sprite.Sprite):
         self.shootsound.set_volume(1)
         self.ouchsound = pygame.mixer.Sound('whilhelm.wav')
         self.ouchsound.set_volume(1)
+        self.killboulder = pygame.mixer.Sound("explode.wav")
+        self.killboulder.set_volume(1)
 
 
 
@@ -88,3 +90,6 @@ class Ship(pygame.sprite.Sprite):
     def loselife(self):
         self.lives -=1
         self.ouchsound.play()
+
+    def blowup(self):
+        self.killboulder.play()

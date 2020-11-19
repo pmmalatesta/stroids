@@ -29,6 +29,8 @@ def main():
         serenity.updateVels()
         serenity.updatePos(WIDTH,HEIGHT)
         screen.fill(utilities.BLACK)
+        #if score > 15:
+            #screen.fill(utilities.AHHHH())
         screen.blit(utilities.rot(serenity.image,serenity.angVel),serenity.rect)
         for shooty in serenity.bullList:
             screen.blit(shooty.bull, shooty.position)
@@ -43,11 +45,13 @@ def main():
                 score+=1
                 if brock.big:
                     rockOn.babyboys(brock)
-                brock.kill()
+                else:
+                    brock.kill()
+                serenity.blowup()
         rockOn.updaterocks()
         pygame.display.update()
         ouch = pygame.sprite.spritecollide(serenity, rockOn.sprlist, True)
         if ouch:
             serenity.loselife()
-        rockOn.spawndelay = 40 - score
+        rockOn.spawndelay = 35 - score
 main()

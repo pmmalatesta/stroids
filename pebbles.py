@@ -12,7 +12,7 @@ class Pebbles(pygame.sprite.Sprite):
         self.vel[1] = spood * math.sin(math.radians(ang))
         self.expiration = lifespan
         self.big = False
-        if random.randint(0,1) >ww 0:
+        if random.randint(0,1) > 0:
             self.pic = pygame.image.load('lstroid1.png')
         else:
             self.pic = pygame.image.load('lstroid2.png')

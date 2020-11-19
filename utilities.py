@@ -1,5 +1,5 @@
 # https://stackoverflow.com/questions/4183208/how-do-i-rotate-an-image-around-its-center-using-pygame for rot
-import pygame, math
+import pygame, math, random
 BLACK = [0,0,0]
 WHITE = [255,255,255]
 CYAN = [0,255,255]
@@ -14,3 +14,6 @@ def rot(im,ang):
     rot_rect.center = rot_image.get_rect().center
     rot_image = rot_image.subsurface(rot_rect).copy()
     return rot_image
+
+def AHHHH():
+    return [random.randint(0,255), random.randint(0,255), random.randint(0,255)]
