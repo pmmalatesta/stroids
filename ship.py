@@ -13,14 +13,18 @@ class Ship(pygame.sprite.Sprite):
         self.image = pygame.Surface([51, 51])
         self.detAng = 0;
         self.pic = pygame.image.load('shipp.png')
+        self.thrusted = pygame.image.load('shippt.png')
         self.pic.set_colorkey(utilities.WHITE)
         self.pic.convert_alpha()
+        self.thrusted.set_colorkey(utilities.WHITE)
+        self.thrusted.convert_alpha()
         #self.image.fill(utilities.WHITE)----------------------------
         self.image.blit(self.pic, (0,0))
         self.rect = self.image.get_rect()
         self.rect.center = pos
         self.angac=0
         self.clean = self.image.copy()
+        self.clean2 = self.thrusted.copy()
         self.bullList = pygame.sprite.Group()
         self.pythag = math.sqrt(pos[0]*pos[0]+pos[1]*pos[1])
         pygame.mixer.pre_init()
@@ -59,7 +63,10 @@ class Ship(pygame.sprite.Sprite):
         self.angle = self.angle % 360
         self.detAng += self.angVel
         self.detAng = self.detAng%360
-        self.image = utilities.rot(self.clean,self.detAng)
+        if self.thrust:
+            self.image = utilities.rot(self.clean2,self.detAng)
+        else:
+            self.image = utilities.rot(self.clean, self.detAng)
         self.rect.center = self.pos
     def updateVels(self):
         accel = .5

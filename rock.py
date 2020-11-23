@@ -7,7 +7,10 @@ class Rock(pygame.sprite.Sprite):
         self.speed = BASEV
         self.pos = self.assignPos(quad,wid,hei)
         self.vel = self.assignVels(quad,wid,hei)
-        self.pic = pygame.image.load('bstroid.png')
+        if random.randint(0,1) >0:
+            self.pic = pygame.image.load('bstroid.png')
+        else:
+            self.pic = pygame.image.load('bstroid2.png')
         self.pic.set_colorkey(utilities.WHITE)
         self.pic.convert_alpha()
         self.big = True
@@ -55,3 +58,6 @@ class Rock(pygame.sprite.Sprite):
             else:
                 ang = -math.radians((random.randint(45, 90)))
         return [self.speed*math.cos(ang), self.speed*math.sin(-ang)]
+
+    def getpos(self):
+        return self.pos

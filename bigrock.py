@@ -33,6 +33,5 @@ class iceRocks(pygame.sprite.Sprite):
     def babyboys(self, bigboy):
         angle = random.randint(0,180)
         angle2 = angle + random.randint(150,210)
-        self.sprlist.add(pebbles.Pebbles(bigboy.pos, bigboy.expiration*1.5,self.bspeed/1.5,angle))
-        self.sprlist.add(pebbles.Pebbles(bigboy.pos, bigboy.expiration*1.5,self.bspeed/1.5,angle2))
-        bigboy.kill()
+        self.sprlist.add(pebbles.Pebbles(bigboy.getpos(), bigboy.expiration*1.5,self.bspeed/1.5,angle))
+        self.sprlist.add(pebbles.Pebbles(bigboy.getpos(), bigboy.expiration*1.5,self.bspeed/1.5,angle2))
