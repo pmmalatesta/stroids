@@ -71,7 +71,7 @@ def main():
         ouch = pygame.sprite.spritecollide(serenity, listofRocks, True)
         if ouch:
             serenity.loselife()
-        listofRocks.spawndelay = 60 % score
+        listofRocks.spawndelay = 55- score
     death = utilities.create_text("You Lose",100,utilities.RED)
     scorestring = ("You blew up %d rocks!" % score)
     scoremess = utilities.create_text(scorestring, 75, utilities.RED)
