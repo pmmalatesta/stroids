@@ -17,8 +17,8 @@ def rot(im,ang):
     rot_image = rot_image.subsurface(rot_rect).copy()
     return rot_image
 
-def AHHHH():
-    return [random.randint(0,255), random.randint(0,255), random.randint(0,255)]
+def AHHHH(): #Please do not use ever for background
+    return [random.randint(50,255), random.randint(50,255), random.randint(50,255)]
 
 def create_text(text, size, color):
     font = pygame.font.Font(FONT_PATH, size)
