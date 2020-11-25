@@ -1,7 +1,7 @@
 import pygame, math, random, utilities
 
 class Pebbles(pygame.sprite.Sprite):
-    def __init__(self,pos,lifespan,spood,ang):
+    def __init__(self,pos,lifespan,spood,ang,col):
         pygame.sprite.Sprite.__init__(self)
         self.age = 0
         self.pos = pos
@@ -12,12 +12,12 @@ class Pebbles(pygame.sprite.Sprite):
         self.vel[1] = spood * math.sin(math.radians(ang))
         self.expiration = lifespan
         self.big = False
-        a= random.randint(0,3)
-        if a == 0:
+        a= random.randint(0,1)
+        if a == 0 & col == 0:
             self.pic = pygame.image.load('lstroid1.png')
-        elif a == 1:
+        elif a == 1 & col == 0:
             self.pic = pygame.image.load('lstroid2.png')
-        elif a == 2:
+        elif a == 0:
             self.pic = pygame.image.load('lstroid3.png')
         else:
             self.pic = pygame.image.load('lstroid4.png')

@@ -9,8 +9,10 @@ class Rock(pygame.sprite.Sprite):
         self.vel = self.assignVels(quad,wid,hei)
         if random.randint(0,1) >0:
             self.pic = pygame.image.load('bstroid.png')
+            self.col = 0
         else:
             self.pic = pygame.image.load('bstroid2.png')
+            self.col = 1
         self.pic.set_colorkey(utilities.WHITE)
         self.pic.convert_alpha()
         self.big = True
