@@ -28,7 +28,7 @@ def main():
     r3.centery = HEIGHT * .5
     screen.blit(nancysinatra, r3)
     pygame.display.update()
-    time.sleep(1)
+    time.sleep(1.25)
     while serenity.lives>0:
 
         clock.tick(30)

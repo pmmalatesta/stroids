@@ -34,6 +34,8 @@ class Ship(pygame.sprite.Sprite):
         self.ouchsound.set_volume(1)
         self.killboulder = pygame.mixer.Sound("explode.wav")
         self.killboulder.set_volume(1)
+        self.rocketsound = pygame.mixer.Sound("rockets.wav")
+        self.rocketsound.set_volume(1)
 
 
 
@@ -76,6 +78,7 @@ class Ship(pygame.sprite.Sprite):
         if self.thrust:
             self.vel[0] += self.front[0]*accel
             self.vel[1] += self.front[1] * accel;
+            self.rocketsound.play()
         else:
             j=2
             #self.thrustsound.stop()
