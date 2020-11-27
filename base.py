@@ -32,7 +32,6 @@ def main():
     pygame.display.update()
     time.sleep(1.25)
     while serenity.lives>0:
-
         clock.tick(30)
         for event in pygame.event.get():
             if event.type == KEYDOWN:
@@ -57,20 +56,34 @@ def main():
             if projectile.lifetime > projectile.maxl:
                 projectile.kill()
 
-        for asteroid in listofRocks:
-            screen.blit(asteroid.image, asteroid.pos)
-            snipped = pygame.sprite.spritecollide(asteroid, serenity.bullList, True)
-            if snipped:
-                score+=1
-                if asteroid.big:
-                    listofRocks.createsmallrocks(asteroid)
-                asteroid.kill()
-                serenity.blowup()
-        listofRocks.updaterocks()
-        pygame.display.update()
-        ouch = pygame.sprite.spritecollide(serenity, listofRocks, True)
-        if ouch:
+        # update all the asteroids
+        listofRocks.update()
+
+        # find asteroids hit by bullets
+        collisions = pygame.sprite.groupcollide(listofRocks, serenity.bullList, True, True)
+        # collisions is a dictionary of rock => bullet pairs
+        # we don't care about the bullets, just go through the rocks which are the keys in the dict
+        # the kill parameters to this function are both True so we don't have to worry
+        # about removing the rock or bullet
+        for rock in collisions.keys():
+            score += 1
+            serenity.blowup()
+            if rock.big:
+                listofRocks.createsmallrocks(rock)
+
+        # find asteroids that hit our ship (this handles multiple simultaneous collisions)
+        collisions = pygame.sprite.spritecollide(serenity, listofRocks, True)
+        for _ in collisions:
             serenity.loselife()
+            print("Ouch!")
+
+        listofRocks.updaterocks()
+
+        # draw the asteroids, don't use blit, just let the group draw itself
+        listofRocks.draw(screen)
+
+        pygame.display.update()
+
         listofRocks.spawndelay = 55- score
     death = utilities.create_text("You Lose",100,utilities.RED)
     scorestring = ("You blew up %d rocks!" % score)

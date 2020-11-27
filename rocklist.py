@@ -11,16 +11,19 @@ class Rocklist(pygame.sprite.Group):
         self.life = math.sqrt(wid*wid+hei*hei)/self.bspeed
         self.ticker = 0
 
-
+        ### EDIT: Added a test rock that is easy to shoot
+        self.add(rock.Rock(300, 800, 0, 1000))
+        test_rock = self.sprites()[0]
+        test_rock.rect.centerx=800
+        test_rock.rect.centery=200
 
     def createbigRock(self):
         self.add(rock.Rock(self.wid,self.hei, self.bspeed, self.life))
 
     def updaterocks(self):
-        for boulder in self:
-            boulder.pos[0] += boulder.vel[0]
-            boulder.pos[1] += boulder.vel[1]
-            boulder.rect.center = boulder.pos
+        for boulder in self.sprites():
+            boulder.rect.centerx += boulder.vel[0]
+            boulder.rect.centery += boulder.vel[1]
             boulder.angle += boulder.angSpeed
             boulder.image = utilities.rot(boulder.clean, boulder.angle)
             boulder.age +=1
