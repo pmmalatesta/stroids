@@ -17,7 +17,7 @@ class Rock(pygame.sprite.Sprite):
         self.pic.set_colorkey(utilities.WHITE)
         self.pic.convert_alpha()
         self.big = True
-        self.image = pygame.Surface([81, 81])
+        self.image = pygame.Surface([81, 81],pygame.SRCALPHA)
         self.image.blit(self.pic, (0,0))
         self.age = 0
         self.expiration = lifespan

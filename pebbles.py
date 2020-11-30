@@ -23,7 +23,7 @@ class Pebbles(pygame.sprite.Sprite):
             self.pic = pygame.image.load('lstroid4.png')
         self.pic.set_colorkey(utilities.WHITE)
         self.pic.convert_alpha()
-        self.image = pygame.Surface([45,45])
+        self.image = pygame.Surface([45,45],pygame.SRCALPHA)
         self.image.blit(self.pic, (0, 0))
         self.clean = self.image.copy()
         self.rect = self.image.get_rect()

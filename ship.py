@@ -10,7 +10,7 @@ class Ship(pygame.sprite.Sprite):
         self.thrust = False
         self.front = utilities.angle_to_vector(self.angle)
         self.lives = 3
-        self.image = pygame.Surface([51, 51])
+        self.image = pygame.Surface([51, 51],pygame.SRCALPHA)
         self.detAng = 0;
         self.pic = pygame.image.load('shipp.png')
         self.thrusted = pygame.image.load('shippt.png')
