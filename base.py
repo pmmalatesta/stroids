@@ -75,7 +75,7 @@ def main():
         collisions = pygame.sprite.spritecollide(serenity, listofRocks, True)
         for _ in collisions:
             serenity.loselife()
-            print("Ouch!")
+            #print("Ouch!")
 
         listofRocks.updaterocks()
 

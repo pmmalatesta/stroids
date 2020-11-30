@@ -29,14 +29,16 @@ class Ship(pygame.sprite.Sprite):
         self.pythag = math.sqrt(pos[0]*pos[0]+pos[1]*pos[1])
         pygame.mixer.pre_init()
         self.shootsound = pygame.mixer.Sound('shot.wav')
-        self.shootsound.set_volume(1)
+        self.shootsound.set_volume(.75)
         self.ouchsound = pygame.mixer.Sound('whilhelm.wav')
-        self.ouchsound.set_volume(1)
+        self.ouchsound.set_volume(.75)
         self.killboulder = pygame.mixer.Sound("explode.wav")
-        self.killboulder.set_volume(1)
+        self.killboulder.set_volume(.75)
         self.rocketsound = pygame.mixer.Sound("rockets.wav")
         self.rocketsound.set_volume(.15)
-
+        self.mainmusic = pygame.mixer.Sound("music.mp3")
+        self.mainmusic.set_volume(1)
+        pygame.mixer.Channel(5).play(self.mainmusic,-1)
 
 
     def getPos(self):
@@ -78,7 +80,7 @@ class Ship(pygame.sprite.Sprite):
         if self.thrust:
             self.vel[0] += self.front[0]*accel
             self.vel[1] += self.front[1] * accel;
-            self.rocketsound.play()
+            pygame.mixer.Channel(4).play(self.rocketsound)
         else:
             j=2
             #self.thrustsound.stop()
@@ -95,11 +97,11 @@ class Ship(pygame.sprite.Sprite):
 
     def shoot(self, loc, direct, quick):
         self.bullList.add(bang.Bang(loc,direct,quick,self.pythag))
-        self.shootsound.play()
+        pygame.mixer.Channel(3).play(self.shootsound)
 
     def loselife(self):
         self.lives -=1
-        self.ouchsound.play()
+        pygame.mixer.Channel(2).play(self.ouchsound)
 
     def blowup(self):
-        self.killboulder.play()
+        pygame.mixer.Channel(1).play(self.killboulder)
