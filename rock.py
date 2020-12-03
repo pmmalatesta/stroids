@@ -28,7 +28,7 @@ class Rock(pygame.sprite.Sprite):
         self.rect.center = self.assignPos(quad,wid,hei)
         self.vel = self.assignVels(quad,wid,hei)
 
-
+    #defines semi random position based off assigned quadrant
     def assignPos(self,quad,wid,hei):
         if quad == 1:
             return [-50, random.randint(0,hei)]
@@ -39,7 +39,7 @@ class Rock(pygame.sprite.Sprite):
         if quad == 4:
             return [random.randint(0, wid), -50]
 
-
+    #gives velocities to ensure the rock crosses the screen based off assigned position
     def assignVels(self,quad, wid, hei):
         if quad == 1:
             if self.rect.centery > hei/2:
